@@ -16,4 +16,10 @@ class PostController extends Controller
         return PostResource::collection($posts);
     }
 
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return new PostResource($post);
+    }
+
 }
