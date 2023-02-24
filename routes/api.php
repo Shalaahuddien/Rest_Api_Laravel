@@ -10,6 +10,7 @@ Route::get('/posts/{id}', [PostController::class, 'show'])->middleware(['auth:sa
 Route::get('/posts2/{id}', [PostController::class, 'show2']);
 
 Route::post('/login', [AuthenticationController::class, 'login']);
+Route::get('/logout', [AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
 
 
 
