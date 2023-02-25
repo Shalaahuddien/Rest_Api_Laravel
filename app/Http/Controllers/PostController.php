@@ -47,4 +47,22 @@ class PostController extends Controller
 
         // return response()->json('oke bisa di akses method store');
     }
+
+    public function update(Request $request, $id)
+    {
+        // dd('Ini Methode Update');
+         $validated = $request->validate([
+        'title' => 'required|max:255',
+        'news_content' => 'required'
+    ]);
+
+
+    $post = Post::findOrFail($id);
+    $post->update($request->all());
+
+    return new PostDetailResource($post->loadMissing('writer:id,username'));
+
+
+    }
+
 }
