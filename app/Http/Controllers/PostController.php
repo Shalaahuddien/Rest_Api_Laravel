@@ -13,9 +13,11 @@ class PostController extends Controller
     //
     public function index()
     {
+        // $posts = Post::with('writer:id,username')->get();
         $posts = Post::all();
         // return response()->json(['data' => $posts]);
-        return PostResource::collection($posts);
+        return PostDetailResource::collection($posts->loadMissing('writer:id,username'));
+        // return PostDetailResource::collection($posts);
     }
 
     public function show($id)
