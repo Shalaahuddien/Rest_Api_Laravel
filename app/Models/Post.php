@@ -13,7 +13,6 @@ class Post extends Model
 
     use HasFactory;
 
-
     protected $fillable = [
         'title',
         'news_content',
